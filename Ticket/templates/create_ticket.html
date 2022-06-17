@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load custom_tags %}
+<br>
+{% if messages %} {% for message in messages %}
+        <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div> {% endfor %} {% endif %}
+<hr>
+<center><h3>New Ticket</h3></center>
+<hr>
+<div class="alert alert-info">
+    <p><strong>Info!</strong> Please fill in the details of the ticket.</p>
+</div>
+<br>
+<div style="margin: 0x auto 20px 0px;">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            {{form.Subject | append_ast_if_req }}{{form.Subject}}{{form.Subject.help_text}}<br>
+            <br>
+            {{form.Description | append_ast_if_req}}{{form.Description}}{{form.Description.help_text}}<br>
+            <br>
+            {{form.Up_File | append_ast_if_req}}<br>{{form.Up_File}}<br>({{form.Up_File.help_text}})
+            <br>
+            <br>
+            {{form.Level | append_ast_if_req}}{{form.Level}}{{form.Level.help_text}}
+        </div>
+        <center><button class="btn btn-success btn-md" type="Submit">Create Ticket</button></center>
+    </form>
+    <a href="{{request.META.HTTP_REFERER | escape}}"><button class="btn btn-danger btn-sm" style="margin-top: 20px;">Back</button></a>
+</div>
+<br>
+<br><br>
+{% endblock %}

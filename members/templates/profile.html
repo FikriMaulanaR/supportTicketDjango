@@ -1,0 +1,13 @@
+{% extends 'base.html' %}{% block content%}
+<center>
+    <h2>Profile</h2>
+</center>
+<form method="post">
+    {% csrf_token %}
+    <div class="form-group">
+         {{ user_form.as_p }} {{ profile_form.as_p }}
+    </div>
+    <button class="btn btn-primary" type="submit">Save changes</button><br><br>
+</form>
+<a href="{{request.META.HTTP_REFERER | escape}}"><button class="btn btn-danger">Back</button></a>&nbsp; 
+{% endblock %}

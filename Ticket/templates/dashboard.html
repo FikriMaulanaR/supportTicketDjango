@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+{% if messages %} {% for message in messages %}
+<div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+    {{message}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div> {% endfor %} {% endif %}
+{% include 'topside.html' %}
+<link rel="stylesheet" href="{% static 'css/details.css' %}">
+<br>
+<hr>
+{% if t_count >= 1 %}
+<center><h2>My Ticket</h2></center>
+<hr>
+<a href="{% url 'create-ticket' %}"><button class="btn btn-success btn-sm" style="margin-top: 20px;">Create Ticket</button></a>
+<br><br>
+<div class="table-responsive">
+<table class="table table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th style="text-align: center;" scope="col">Tickets</th>
+        <th scope="col">Details</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    {% for T in my_ticket %}
+    <tbody>
+      <tr>
+        <th style="text-align: center;" scope="row">{{T.id}}</th>
+        <td><a href="{% url 'detail-ticket' T.pk %}">{{T.Subject}}</a><br>{{T.Customer.get_full_name}}
+            <br>{{T.Created_at | date:"l, d F Y H:i:s"}}    
+        <br><span>{{T.Status}}</span>&nbsp;<span>{{T.Level}}</span>
+        </td>
+        <td><a class="btn btn-primary btn-sm" href="{% url 'update-ticket' T.pk %}">Update</a>
+        {% if request.user.is_superuser %}
+        <a class="btn btn-danger btn-sm delete-ticket" href="{% url 'delete-ticket' T.pk %}">Delete</a>
+        {% else %}
+
+        {% endif %}
+        </td>
+      </tr>
+    </tbody>
+    {% endfor %}
+  </table>
+</div>
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        {% if my_ticket.has_previous %}
+        <li class="page-item"><a class="page-link" href="{% if search_t %}?search={{ search_t }}&page=1{% else %}?page=1{% endif %}">&laquo First</a></li>
+        <li class="page-item"><a class="page-link" href="{% if search_t %}?search={{ search_t }}&page={{my_ticket.previous_page_number}}{% else %}?page={{my_ticket.previous_page_number}}{% endif %}">Previous</a></li>
+        {% endif %}
+        <!-- <li class="page-item disabled"><a href="#" class="page-link"> Page {{my_ticket.number}} of {{my_ticket.paginator.num_pages}}</a></li> -->
+        {% for i in nums %}
+        <li class="page-item"><a class="page-link" href="{% if search_t %}?search={{ search_t }}&page={{forloop.counter}}{% else %}?page={{forloop.counter}}{% endif %}">{{ forloop.counter }}</a></li>
+        {% endfor %} {% if my_ticket.has_next %}
+        <li class="page-item"><a class="page-link" href="{% if search_t %}?search={{ search_t }}&page={{my_ticket.next_page_number}}{% else %}?page={{my_ticket.next_page_number}}{% endif %}">Next</a></li>
+        <li class="page-item"><a class="page-link" href="{% if search_t %}?search={{ search_t }}&page={{my_ticket.paginator.num_pages}}{% else %}?page={{my_ticket.paginator.num_pages}}{% endif %}">Last &raquo</a></li> {% endif %}
+    </ul>
+</nav>
+<br><br>
+{% else %}
+    <center><h2>You haven't made a ticket yet</h2></center>
+    <center><a href="{% url 'create-ticket' %}"><button class="btn btn-success btn-sm" style="margin-top: 20px;">Create Ticket</button></a></center>
+    <br><br><br>
+{% endif %}
+<script type="text/javascript" src="{% static 'js/span.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+  $(document).on('click', '.delete-ticket', function(){
+    return confirm('Are you sure you want to delete this?');
+})
+</script>
+{% endblock %}1

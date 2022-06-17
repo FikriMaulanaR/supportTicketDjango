@@ -1,0 +1,5 @@
+Django==3.2.13
+Psycopg2
+Python==3.9.13
+Postgresql>=12
+Boostrap>=v4.6

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load custom_tags %}
+<br>
+{% if messages %} {% for message in messages %}
+        <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div> {% endfor %} {% endif %}
+<hr>
+<center><h3>Update Ticket</h3></center>
+<hr>
+<br>
+<div style="margin: 0x auto 20px 0px;">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            {{form.Customer.label_tag}}{{form.Customer}}
+            <br>
+            {{form.Subject | append_ast_if_req}}{{form.Subject}}
+            <br>
+            {{form.Description | append_ast_if_req}}{{form.Description}}
+            <br>
+            {{form.Up_File.label_tag}}<br>{{form.Up_File}}
+            <br>
+            <br>
+            {{form.Level | append_ast_if_req}}{{form.Level}}
+            <br>
+            {{form.Status.label_tag}}{{form.Status}}
+        </div>
+        <center><button class="btn btn-success btn-md" type="Submit">Update Ticket</button></center>
+    </form>
+    <a href="{{request.META.HTTP_REFERER | escape}}"><button class="btn btn-danger btn-sm" style="margin-top: 20px;">Back</button></a>
+</div>
+<br><br>
+<span>Note: * is required</span>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+    $('#id_Customer').css('pointer-events', 'none').on('focus', function() {
+        $(this).blur();
+    });
+</script>
+{% endblock %}

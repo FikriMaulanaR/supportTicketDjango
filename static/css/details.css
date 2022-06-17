@@ -1,0 +1,63 @@
+.span-judul {
+    display: inline-block;
+    width: 300px;
+    padding: 4px 0px;
+    font-weight: bold;
+}
+
+.span-value {
+    display: inline-block;
+    width: 450px;
+    padding-bottom: 4px;
+    border-bottom: 1px dashed #999;
+}
+
+p {
+    margin: 0 0 10px;
+}
+
+.label {
+    display: inline;
+    padding: 0.4em 0.7em 0.5em;
+    font-size: 75%;
+    font-weight: bold;
+    line-height: 1;
+    text-align: center;
+    color: #fff;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25em;
+}
+
+.label-primary {
+    background-color: #337ab7;
+    color: #fff;
+}
+
+.label-success {
+    background-color: #5cb85c;
+    color: #fff;
+}
+
+.label-danger {
+    background-color: #d9534f;
+    color: #fff;
+}
+
+.label-warning {
+    background-color: #f7bb0a;
+    color: #fff;
+}
+
+.table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+}
+
+.table-bordered {
+    border: 1px solid #ddd;
+}
+.boxed {
+    border: 1px solid green ;
+  }
