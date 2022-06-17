@@ -29,7 +29,7 @@ Setelah berhasil mengunduh repository, instalasi terlebih dahulu virtualenvironm
 ```
 python3 -m virutalenv Env
 ```
-Kemudian install pip dengan perinta berikut.
+Kemudian install pip dengan perintah berikut.
 ```
 sudo apt install python-pip3
 ```
