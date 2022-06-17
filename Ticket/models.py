@@ -5,8 +5,8 @@ from .validators import validate_file_size, validate_file_extension, validate_fi
 # Create your models here.
 class Ticket(models.Model):
     Customer = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
-    Subject = models.CharField(max_length=100, help_text='Subject of The Question')
-    Description = models.CharField(max_length=1000, help_text='Describe Your Question!')
+    Subject = models.CharField(max_length=100, help_text='The subject of your problem or question')
+    Description = models.CharField(max_length=1000, help_text='Describe your problem here!')
     Up_File = models.FileField(upload_to='dokumen/', verbose_name="", validators=[validate_file_size,validate_file_extension1], null=True, blank=True, help_text='This field is not required')
     Created_at = models.DateTimeField(auto_now_add=True)
     Last_update = models.DateTimeField(auto_now=True)

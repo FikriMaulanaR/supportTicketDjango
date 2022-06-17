@@ -166,6 +166,10 @@ class TicketDetailView(DetailView):
             messages.success(request, "Comment Added Successfully")
 
             return redirect(reverse("detail-ticket", kwargs={'pk': ticket.id}))
+        else:
+            ticket = self.get_object()
+            messages.warning(request, (form.errors))
+            return redirect(reverse("detail-ticket", kwargs={'pk': ticket.id}))
 
     def get_context_data(self, **kwargs):
         ticket_comments_count = TicketComment.objects.all().filter(ticket=self.object.id).count()
