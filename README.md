@@ -37,6 +37,11 @@ langsung demo sistem dengan perintah:
  ```
  python manage.py runserver / python3 manage.py runserver
  ```
+ Export dan gunakan database dbsupportticket.sql untuk menggunakan akun demo admin.
+ Untuk masuk ke halaman admin, gunakan url berikut.
+ ```
+ http://127.0.0.1:8000/admin/
+ ```
  Gunakan akun demo:
  ```
  Username : adminsupport
