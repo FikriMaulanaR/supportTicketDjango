@@ -1,4 +1,4 @@
-Django==3.2.13
+Django==3.2.14
 Psycopg2
 Python==3.9.13
 Postgresql>=12
