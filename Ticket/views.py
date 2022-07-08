@@ -1,4 +1,3 @@
-from ast import If
 from django.shortcuts import get_object_or_404, render, redirect, reverse
 from .models import Ticket, TicketComment
 from .forms import TicketForm, TicketCommentForm

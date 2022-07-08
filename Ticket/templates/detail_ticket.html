@@ -52,6 +52,14 @@
                     {% endif %}
                 </tr>
                 <tr>
+                    <th class="table-active">Created</th>
+                    <td>{{ticket.Created_at | date:"l, d F Y H:i:s"}}</td>
+                </tr>
+                <tr>
+                    <th class="table-active">Last Updated</th>
+                    <td>{{ticket.Last_update | date:"l, d F Y H:i:s"}}</td>
+                </tr>
+                <tr>
                     <th class="table-active">Status</th>
                     <td><span>{{ticket.Status}}</span></td>
                 </tr>
@@ -67,7 +75,7 @@
     <!--comments-->
     <div class="section">
         <div class="container">
-            <h3>Comment / Response({{ticket_comments_count}})</h3>
+            <h3>Comments / Responses({{ticket_comments_count}})</h3>
             <div class="row">
                 <div class="col-lg-8 mx-auto">
                     <!--display comment-->
@@ -92,10 +100,10 @@
                                     <time class="ml-4 opacity-70 small-3">{{comment.date| date:"l, d F Y H:i:s"}}</time>
                                 </div>
                                 <hr>
-                                <p class="text-justify">{{comment.comment}}</p>
+                                <p style="white-space: pre-line" class="text-justify">{{comment.comment}}</p>
                                 <br>
                                 {% if not comment.Up_Doc or variable <= 1 %}
-                                (No File Attached)
+                                
                                 <hr>
                                 {% else %}
                                 Attached document: <a href="{{comment.Up_Doc.url}}" target="_blank">Click Here</a>

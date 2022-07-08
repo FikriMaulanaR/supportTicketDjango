@@ -65,8 +65,14 @@ WSGI_APPLICATION = 'supportticket.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'dbsupportticket',
+        #'ENGINE': 'django.db.backends.postgresql',
+        #'NAME': 'dbsupportticket',
+        'ENGINE':'django.db.backends.postgresql_psycopg2',
+        'NAME':'dbsupportticket',
+        'USER':'postgres',
+        'PASSWORD':'d3n2d3d3n2',
+        'HOST':'localhost',
+        'PORT':'5432',
     }
 }
 
