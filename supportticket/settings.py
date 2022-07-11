@@ -67,10 +67,10 @@ DATABASES = {
     'default': {
         #'ENGINE': 'django.db.backends.postgresql',
         #'NAME': 'dbsupportticket',
-        'ENGINE':'django.db.backends.postgresql_psycopg2',
+        'ENGINE':'django.db.backends.postgresql',
         'NAME':'dbsupportticket',
-        'USER':'postgres',
-        'PASSWORD':'d3n2d3d3n2',
+        'USER':'fikrimaulanar',
+        'PASSWORD':'12345',
         'HOST':'localhost',
         'PORT':'5432',
     }
