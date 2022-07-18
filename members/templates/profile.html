@@ -11,5 +11,5 @@
     </div>
     <button class="btn btn-primary" type="submit">Save changes</button><br><br>
 </form>
-<a href="{{request.META.HTTP_REFERER | escape}}"><button class="btn btn-danger">Back</button></a>&nbsp; 
+<a href="{% url 'Dashboard' %}"><button class="btn btn-danger">Back</button></a>&nbsp; 
 {% endblock %}
